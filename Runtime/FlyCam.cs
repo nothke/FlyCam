@@ -101,15 +101,15 @@ namespace Nothke.FlyCamera
 
         void DoMouseLook()
         {
-            bool _canRotate = rotateOnClick && Input.GetMouseButton(1); // canRotate
+            bool _canRotate = canRotate && (rotateOnClick ? Input.GetMouseButton(1) : true);
 
             float mouseX = Input.GetAxis("Mouse X");
             float mouseY = -Input.GetAxis("Mouse Y");
 
             if (_canRotate)
             {
-                rotY += mouseX * mouseSensitivity * Time.deltaTime;
-                rotX += mouseY * mouseSensitivity * Time.deltaTime;
+                rotY += mouseX * mouseSensitivity * 0.016f;
+                rotX += mouseY * mouseSensitivity * 0.016f;
 
                 rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
 
